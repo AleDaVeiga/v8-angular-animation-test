@@ -8,7 +8,6 @@ import { ListHeroFadeComponent } from './hero/list-hero-fade.component';
 import { VillainService } from './hero/villain.service';
 import { HeroService } from './hero/hero.service';
 import { HttpClientModule } from '@angular/common/http';
-import { MatNativeDateModule } from '@angular/material/core';
 import { DemoMaterialModule } from './material-module';
 
 @NgModule({
@@ -17,7 +16,6 @@ import { DemoMaterialModule } from './material-module';
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    MatNativeDateModule,
     ReactiveFormsModule,
     DemoMaterialModule
   ],
