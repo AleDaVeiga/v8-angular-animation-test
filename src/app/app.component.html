@@ -1,29 +1,11 @@
-<div class="column">
+<div class="column" [@animacaoGRU]="'inicio'">
   <h4>Comprovante de pagamento RE - GRU</h4>
   <mat-icon>bolt</mat-icon>
   <span>Arquivo automático</span>
 </div>
-
-<div class="column">
-  <h4>Simple fade in and out</h4>
-  <p>This animation uses the "void" state to create a simple fade in for new elements and fade out for removed elements.
-  </p>
-  <app-list-hero-fade [heroes]="heroes"></app-list-hero-fade>
-</div>
-
-<div class="buttons">
-  <button [disabled]="!heroService.canAdd()" (click)="heroService.add()">Add hero</button>
-  <button [disabled]="!heroService.canRemove()" (click)="heroService.remove()">Remove hero</button>
-</div>
-
-<div class="column">
-  <h4>Fade in and out with an informative banner</h4>
-  <p>This animation is similar to the one above, except it shows a simple banner over the items after they're added and
-    before they disappear.</p>
-  <app-list-villain-fade [villains]="villains"></app-list-villain-fade>
-</div>
-
-<div class="buttons">
-  <button [disabled]="!villainService.canAdd()" (click)="villainService.add()">Add villain</button>
-  <button [disabled]="!villainService.canRemove()" (click)="villainService.remove()">Remove villain</button>
+<button (click)="startOpenClose()">Iniciar</button>
+<div [@openClose]="isOpen ? 'open' : 'close'"
+    (@openClose.start)="onAnimationEvent($event)"
+    (@openClose.done)="onAnimationEvent($event)">
+  <mat-icon>bolt</mat-icon>
 </div>

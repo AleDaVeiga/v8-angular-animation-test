@@ -1,35 +1,82 @@
+import {
+  animate,
+  AnimationEvent,
+  keyframes,
+  state,
+  style,
+  transition,
+  trigger
+} from '@angular/animations';
 import { Component } from '@angular/core';
-import { Hero } from './hero/hero';
-import { HeroService } from './hero/hero.service';
-import { Villain } from './hero/villain';
-import { VillainService } from './hero/villain.service';
 
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  animations: [
+    trigger('animacaoGRU', [
+      state('inicio', style({ opacity: 1 })),
+      state('fim', style({ opacity: 0 })),
+      transition('inicio => *', [
+        style({ backgroundColor: 'yellow' }),
+        animate('3s ease-in')
+      ]),
+      transition('* => inicio', [
+        style({ backgroundColor: 'white' }),
+        animate('3s ease-out')
+      ])
+    ]),
+
+    trigger('openClose', [
+      transition('open => close', [
+        animate(
+          '2s ease-in',
+          keyframes([
+            style({ backgroundColor: 'blue', offset: 0 }),
+            style({ backgroundColor: 'red', offset: 0.8 }),
+            style({ backgroundColor: 'orange', offset: 1.0 })
+          ])
+        )
+      ]),
+      transition('close => open', [
+        animate(
+          '2s ease-out',
+          keyframes([
+            style({ backgroundColor: 'orange', offset: 0 }),
+            style({ backgroundColor: 'red', offset: 0.2 }),
+            style({ backgroundColor: 'blue', offset: 1.0 })
+          ])
+        )
+      ])
+    ])
+  ]
 })
 export class AppComponent {
-  state = 'inactive';
-  times = 5;
-  counter = 0;
+  isOpen: string = 'open';
 
-  heroes: Hero[];
-  villains: Villain[];
+  constructor() {}
 
-  constructor(
-    private heroService: HeroService,
-    private villainService: VillainService
-  ) {
-    this.heroes = heroService.heroes;
-    this.villains = villainService.villains;
+  startOpenClose() {
+    this.isOpen = this.isOpen === 'open' ? 'close' : 'open';
   }
 
-  onDone($event) {
-    // call this function at the end of the animation.
-    if (this.counter < this.times) {
-      this.state = this.state === 'active' ? 'inactive' : 'active';
-      this.counter++;
-    }
+  onAnimationEvent(event: AnimationEvent) {
+    // openClose is trigger name in this example
+    console.warn(`Animation Trigger: ${event.triggerName}`);
+
+    // phaseName is start or done
+    console.warn(`Phase: ${event.phaseName}`);
+
+    // in our example, totalTime is 1000 or 1 second
+    console.warn(`Total time: ${event.totalTime}`);
+
+    // in our example, fromState is either open or closed
+    console.warn(`From: ${event.fromState}`);
+
+    // in our example, toState either open or closed
+    console.warn(`To: ${event.toState}`);
+
+    // the HTML element itself, the button in this case
+    console.warn(`Element: ${event.element}`);
   }
 }
