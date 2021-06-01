@@ -14,7 +14,7 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   animations: [
-    trigger('animacaoGRU', [
+    /* trigger('animacaoGRU', [
       state('inicio', style({ opacity: 1 })),
       state('fim', style({ opacity: 0 })),
       transition('inicio => *', [
@@ -25,10 +25,15 @@ import { Component } from '@angular/core';
         style({ backgroundColor: 'white' }),
         animate('3s ease-out')
       ])
-    ]),
-
+    ]),*/
     trigger('openClose', [
-      transition('open => close', [
+        transition('* => *', [
+          animate('2s', keyframes([
+            style({ backgroundColor: 'blue' }),
+            style({ backgroundColor: 'red' }),
+            style({ backgroundColor: 'orange' })
+          ]))
+      /* transition('open => close', [
         animate(
           '2s ease-in',
           keyframes([
@@ -46,13 +51,13 @@ import { Component } from '@angular/core';
             style({ backgroundColor: 'red', offset: 0.2 }),
             style({ backgroundColor: 'blue', offset: 1.0 })
           ])
-        )
+        )*/
       ])
     ])
   ]
 })
 export class AppComponent {
-  isOpen: string = 'open';
+  isOpen = 'close';
 
   constructor() {}
 
@@ -63,19 +68,14 @@ export class AppComponent {
   onAnimationEvent(event: AnimationEvent) {
     // openClose is trigger name in this example
     console.warn(`Animation Trigger: ${event.triggerName}`);
-
     // phaseName is start or done
     console.warn(`Phase: ${event.phaseName}`);
-
     // in our example, totalTime is 1000 or 1 second
     console.warn(`Total time: ${event.totalTime}`);
-
     // in our example, fromState is either open or closed
     console.warn(`From: ${event.fromState}`);
-
     // in our example, toState either open or closed
     console.warn(`To: ${event.toState}`);
-
     // the HTML element itself, the button in this case
     console.warn(`Element: ${event.element}`);
   }

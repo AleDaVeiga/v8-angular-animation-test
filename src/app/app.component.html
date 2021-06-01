@@ -1,11 +1,12 @@
-<div class="column" [@animacaoGRU]="'inicio'">
+<!-- div class="column" [@animacaoGRU]="'inicio'">
   <h4>Comprovante de pagamento RE - GRU</h4>
   <mat-icon>bolt</mat-icon>
   <span>Arquivo automático</span>
-</div>
+</div -->
 <button (click)="startOpenClose()">Iniciar</button>
-<div [@openClose]="isOpen ? 'open' : 'close'"
+<div [@openClose]="isOpen"
     (@openClose.start)="onAnimationEvent($event)"
-    (@openClose.done)="onAnimationEvent($event)">
-  <mat-icon>bolt</mat-icon>
+    (@openClose.done)="onAnimationEvent($event)"
+    class="open-close-container">
+    Que comece o show
 </div>
