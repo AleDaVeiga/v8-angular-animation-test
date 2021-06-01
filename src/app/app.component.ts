@@ -27,42 +27,22 @@ import { Component } from '@angular/core';
       ])
     ]),*/
     trigger('openClose', [
-        transition('* => *', [
-          animate('2s', keyframes([
-            style({ backgroundColor: 'blue' }),
-            style({ backgroundColor: 'red' }),
-            style({ backgroundColor: 'orange' })
-          ]))
-      /* transition('open => close', [
-        animate(
-          '2s ease-in',
-          keyframes([
-            style({ backgroundColor: 'blue', offset: 0 }),
-            style({ backgroundColor: 'red', offset: 0.8 }),
-            style({ backgroundColor: 'orange', offset: 1.0 })
-          ])
-        )
-      ]),
-      transition('close => open', [
-        animate(
-          '2s ease-out',
-          keyframes([
-            style({ backgroundColor: 'orange', offset: 0 }),
-            style({ backgroundColor: 'red', offset: 0.2 }),
-            style({ backgroundColor: 'blue', offset: 1.0 })
-          ])
-        )*/
+      transition('void => *', [
+        animate('3s', keyframes ( [
+          style({ opacity: 0.1, offset: 0.1, backgroundColor: 'blue' }),
+          style({ opacity: 0.6, offset: 0.2, backgroundColor: 'blue' }),
+          style({ opacity: 1,   offset: 0.5, backgroundColor: 'blue' }),
+          style({ opacity: 0.2, offset: 0.7, backgroundColor: 'blue' })
+        ]))
       ])
     ])
   ]
 })
 export class AppComponent {
-  isOpen = 'close';
 
   constructor() {}
 
   startOpenClose() {
-    this.isOpen = this.isOpen === 'open' ? 'close' : 'open';
   }
 
   onAnimationEvent(event: AnimationEvent) {
