@@ -14,25 +14,16 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   animations: [
-    /* trigger('animacaoGRU', [
-      state('inicio', style({ opacity: 1 })),
-      state('fim', style({ opacity: 0 })),
-      transition('inicio => *', [
-        style({ backgroundColor: 'yellow' }),
-        animate('3s ease-in')
-      ]),
-      transition('* => inicio', [
-        style({ backgroundColor: 'white' }),
-        animate('3s ease-out')
-      ])
-    ]),*/
     trigger('openClose', [
       transition('void => *', [
         animate('3s', keyframes ( [
-          style({ opacity: 0.1, offset: 0.1, backgroundColor: 'blue' }),
-          style({ opacity: 0.6, offset: 0.2, backgroundColor: 'blue' }),
-          style({ opacity: 1,   offset: 0.5, backgroundColor: 'blue' }),
-          style({ opacity: 0.2, offset: 0.7, backgroundColor: 'blue' })
+          style({ backgroundColor: '#FFFFFF' }),
+          style({ backgroundColor: '#EDF3FF' }),
+          style({ backgroundColor: '#FFFFFF' }),
+          style({ backgroundColor: '#EDF3FF' }),
+          style({ backgroundColor: '#FFFFFF' }),
+          style({ backgroundColor: '#EDF3FF' }),
+          style({ backgroundColor: '#FFFFFF' })
         ]))
       ])
     ])

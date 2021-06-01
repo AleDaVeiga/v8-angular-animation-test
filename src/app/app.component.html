@@ -4,9 +4,6 @@
   <span>Arquivo automático</span>
 </div -->
 <button (click)="startOpenClose()">Iniciar</button>
-<div @openClose style="background-color: 'white'"
-    (@openClose.start)="onAnimationEvent($event)"
-    (@openClose.done)="onAnimationEvent($event)"
-    class="open-close-container">
-    Que comece o show
+<div @openClose class="open-close-container">
+  Que comece o show
 </div>
