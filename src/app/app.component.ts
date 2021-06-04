@@ -15,14 +15,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
   animations: [
     trigger('openClose', [
-      transition('void => *', [
+      transition('false => true', [
         animate('3s', keyframes ( [
           style({ backgroundColor: '#FFFFFF' }),
-          style({ backgroundColor: '#EDF3FF' }),
+          style({ backgroundColor: 'red' }),
           style({ backgroundColor: '#FFFFFF' }),
-          style({ backgroundColor: '#EDF3FF' }),
+          style({ backgroundColor: 'red' }),
           style({ backgroundColor: '#FFFFFF' }),
-          style({ backgroundColor: '#EDF3FF' }),
+          style({ backgroundColor: 'red' }),
           style({ backgroundColor: '#FFFFFF' })
         ]))
       ])
@@ -30,10 +30,12 @@ import { Component } from '@angular/core';
   ]
 })
 export class AppComponent {
+  uuid: string;
 
   constructor() {}
 
   startOpenClose() {
+    this.uuid = '123';
   }
 
   onAnimationEvent(event: AnimationEvent) {
